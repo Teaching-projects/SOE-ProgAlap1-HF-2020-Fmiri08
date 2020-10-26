@@ -1,5 +1,6 @@
 """
-Kerj be ket egesz szamot, ird ki a nagyobbikat.
+Kerj be ket egesz szamot, ird ki a nagyobbikat. valami
+
 """
 
 a=int(input())

@@ -8,6 +8,7 @@ Bemenet:
 Kimenet:
 3
 54
+
 """
 def lnko (a,b):
     if a == b:

@@ -31,7 +31,8 @@ lista=[]
 for i in range(n):
     szam=int(input)
     lista.append(szam)
-print(lista)    
+print(lista)
+    
 """
 n=int(input())
 index=0

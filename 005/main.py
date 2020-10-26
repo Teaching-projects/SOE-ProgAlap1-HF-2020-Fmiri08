@@ -19,3 +19,12 @@ Pl.:
 49 (100)  -->  1
 """
 
+szam=int(input())
+marad=[]
+ossz=0
+while szam>0:
+    marad.append(szam%7)
+    szam//=7
+for i in range(len(marad)):
+    ossz = ossz + marad[i]
+print(ossz)

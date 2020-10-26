@@ -1,7 +1,8 @@
 """
-Irj programot, mely beker ket egesz szamot, es kiirja az osszeguket.
+Irj programot, mely beker ket egesz szamot, es kiirja az osszeguket. valami
+
 """
-a=int(input())
+a=int(input())    
 b=int(input())
 print(a+b)
 
