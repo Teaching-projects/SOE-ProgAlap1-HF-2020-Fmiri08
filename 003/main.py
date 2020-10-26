@@ -25,3 +25,22 @@ Pelda kimenet:
 [0, 35, 1]
 
 """
+"""
+n=int(input())
+lista=[]
+for i in range(n):
+    szam=int(input)
+    lista.append(szam)
+print(lista)    
+"""
+n=int(input())
+index=0
+lista=[]
+while index!=n:
+    szam=int(input())
+    if szam>=0:
+        index=index+1
+        lista.append(szam)
+print(lista)            
+
+
