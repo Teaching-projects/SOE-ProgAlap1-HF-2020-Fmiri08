@@ -25,9 +25,17 @@ Pelda kimenet:
 Feltetelezhetjuk, hogy legalabb egy nem 0 szamot fogunk kapni.
 
 """
-
-
-
-
-print(str(     )+": "+str(   ))
-
+n=int(input())
+szamok=[]
+while n!=0:
+    szamok.append(n)
+    n=int(input())
+max=0    
+for i in range(len(szamok)):
+    if szamok[i] > max:
+        max=szamok[i]
+for i in range(1, max + 1):
+    db = 0
+    for j in szamok:
+        if i == j: db += 1
+    print(str(i)+": "+str(db))
