@@ -2,6 +2,8 @@
 Kerj be egesz szamokat addig, amig 0-t nem kapsz.
 A vegen irj ki minden bekert szamot, de mindgyiket csak egyszer, es abban a sorrendben, ahogy az elso elofordulas tortent.
 
+
+
 pl:
 
 Bemenet:

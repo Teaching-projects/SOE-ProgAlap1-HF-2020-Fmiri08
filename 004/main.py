@@ -10,15 +10,16 @@ Kimenet:
 54
 
 """
-def lnko (a,b):
-    if a == b:
+def lnko(a,b):
+    if a==b:
         return a
-    if a < b:
-        return lnko(a, b-a)
-    if a > b:
-        return lnko(b, a-b)
-def lkkt (a,b):
-    return int(a*b / lnko(a,b))
+    if a<b:
+        return lnko(a,b-a)
+    if a>b:
+        return lnko(b,a-b)
+def lkkt(a,b):
+    return int(a*b/lnko(a,b))
 a=int(input())
 b=int(input())
-print (lnko(a,b),' ',(lkkt(a,b)))
+print(lnko(a,b))
+print(lkkt(a,b))6

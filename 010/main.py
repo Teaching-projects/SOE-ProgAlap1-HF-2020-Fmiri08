@@ -12,7 +12,7 @@ while index!=24:
         szamla.append(fix)
         index+=2
     else : 
-        szamla.append((honap[index]*perc)+(honap[index+1]*sms)-fix)   
+        szamla.append((honap[index]*perc)+(honap[index+1]*sms))   
         index+=2
 total=0
 for i in szamla:
