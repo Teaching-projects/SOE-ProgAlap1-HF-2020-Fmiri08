@@ -22,4 +22,4 @@ def lkkt(a,b):
 a=int(input())
 b=int(input())
 print(lnko(a,b))
-print(lkkt(a,b))6
+print(lkkt(a,b))
