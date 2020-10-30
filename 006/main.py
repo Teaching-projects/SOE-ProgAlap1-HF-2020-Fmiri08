@@ -31,8 +31,6 @@ Kimenet:
 
 szam=int(input())
 lista=[]
-if szam==0:
-    print(szam)
 while szam!=0:
     if szam not in lista:
         lista.append(szam)
