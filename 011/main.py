@@ -43,23 +43,14 @@ def initialize_map (width, height):
     terkep=[width*["█"]]
     for i in range(height-2):
         egyseg=["█"]
-        for j in range(height-2):
-            egyseg.append("░") 
-        egyseg.append("█")   
+        for j in range(width-2):
+            egyseg.append("░")
+        egyseg.append("█")          
         terkep.append(egyseg)
     terkep.append(["█"]*width)    
     return terkep
 
 """
-  for i in range(height-2):
-        egyseg=["█"]
-        for j in range(height-2):
-            egyseg.append("░")
-        egyseg.append("█")
-    terkep.append(egyseg)
-    terkep.append(["█"]*width)    
-    return terkep
-
 peldaul az initialize_map(3,4) a kovetkezo listat adja vissza:
 [["█","█","█"],["█","░","█"],["█","░","█"],["█","█","█"]]
 
