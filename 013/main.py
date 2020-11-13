@@ -34,10 +34,31 @@ Ket dolog valtozott meg:
 
 def initialize_map (width, height):
     # ide masold be a helyes megoldasodat a multkorirol
+    terkep=[width*["█"]]
+    for i in range(height-2):
+        egyseg=["█"]
+        for j in range(width-2):
+            egyseg.append("░")
+        egyseg.append("█")          
+        terkep.append(egyseg)
+    terkep.append(["█"]*width)    
+    return terkep
 
 def pretty_map_print(map, character):
     # Ide masold be a multkorit, a fenti modositasokkal. 
     # Ha a karakter pozicioja a palyan kivul lenne, egyszeruen ne jelenjen meg
+    X=character["position"]["x"]
+    y=character["position"]["y"]
+    sor=len(map[1])
+    oszlop=len(map)
+    if ( x <= sor - 1 and x >= 0) and (y <= oszlop - 1 and y >= 0): 
+        map[y][x] = "🧙"
+    for i in range(len(map)):
+        for j in range(len(map[i])): print(map[i][j], end="")
+        print()
+  
+
+
 
 
 ###############################################################
