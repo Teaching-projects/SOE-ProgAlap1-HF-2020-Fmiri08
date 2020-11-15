@@ -32,7 +32,9 @@ def pretty_map_print(map, character):
         map[y][x] = "🧙"
         
     for i in range(len(map)):
-        for j in range(len(map[i])): print(map[i][j], end="")
+        for j in range(len(map[i])): 
+            print(map[i][j], end="")
+            if map[i][j] != "🧙": print(map[i][j], end="")
         print("")
 
 

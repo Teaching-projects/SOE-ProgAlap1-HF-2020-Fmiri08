@@ -37,4 +37,3 @@ while szam!=0:
     szam=int(input())
 for i in range(len(lista)):
     print(lista[i])
-    
