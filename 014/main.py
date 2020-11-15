@@ -28,9 +28,9 @@ def pretty_map_print(map, character):
     sor = len(map[1])
     oszlop = len(map)
     if (x <= sor - 1 and x >= 0) and (y <= oszlop - 1 and y >= 0): 
-        print(len(map[y]))
+        
         map[y][x] = "🧙"
-        print(len(map[y]))
+        
     for i in range(len(map)):
         for j in range(len(map[i])): print(map[i][j], end="")
         print("")
