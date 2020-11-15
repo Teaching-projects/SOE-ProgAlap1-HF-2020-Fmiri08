@@ -34,14 +34,14 @@ Ket dolog valtozott meg:
 
 def initialize_map (width, height):
     # ide masold be a helyes megoldasodat a multkorirol
-    terkep=[width*["█"]]
+    terkep=[width*["██"]]
     for i in range(height-2):
-        egyseg=["█"]
+        egyseg=["██"]
         for j in range(width-2):
-            egyseg.append("░")
-        egyseg.append("█")          
+            egyseg.append("░░")
+        egyseg.append("██")          
         terkep.append(egyseg)
-    terkep.append(["█"]*width)    
+    terkep.append(["██"]*width)    
     return terkep
 
 def pretty_map_print(map, character):
