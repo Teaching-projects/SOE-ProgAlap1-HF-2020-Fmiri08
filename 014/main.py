@@ -41,6 +41,7 @@ def move(map,character,direction):
     x = character["position"]["x"]
     y = character["position"]["y"]
     map[character["position"]["y"]][character["position"]["x"]] = "░"
+
     if (direction == "up") and (map[y-1][x] != "█"): 
         character["position"]["y"] -= 1
         return True
@@ -54,7 +55,7 @@ def move(map,character,direction):
         character["position"]["x"] += 1
         return True
     else:
-        return False        
+        return False
 
 
 
