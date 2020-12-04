@@ -29,11 +29,16 @@ def position_distance(p1,p2):
 # A fuggveny adja meg a track teljes hosszat, ami a pontok kozotti legvonalbeli tavolsagok osszege.
 # Nem kell foglalkozni 3d tavolsaggal, csak a "felulnezeti tavolsaggal".
 def total_distance(gpx):
-    pass
+    ossztav=0
+    for i in range(len(gpx)):
+        ossztav+=position_distance(gpx[i]["position"],gpx[i+1]["position"])
+    return ossztav
 
 # Ez adja meg maasodpercben, milyen hosszan futottunk
 def total_time(gpx):
-    pass
+    osszido=0
+    osszido=gpx[len]["timestamp"]-gpx[0]["timestamp"]
+    return osszido
 
 # Ez a fuggveny adja meg masodpercben, hogy a futas soran hany masodpercig alldogaltunk csak futas helyett.
 # Alldogalasnak szamit, ha ket meresi pont kozott nem valtozik a pozicio
