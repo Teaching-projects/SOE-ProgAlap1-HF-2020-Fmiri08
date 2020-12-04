@@ -37,17 +37,26 @@ def total_distance(gpx):
 # Ez adja meg maasodpercben, milyen hosszan futottunk
 def total_time(gpx):
     osszido=0
-    osszido=gpx[len]["timestamp"]-gpx[0]["timestamp"]
+    osszido=gpx[len-1]["timestamp"]-gpx[0]["timestamp"]
     return osszido
 
 # Ez a fuggveny adja meg masodpercben, hogy a futas soran hany masodpercig alldogaltunk csak futas helyett.
 # Alldogalasnak szamit, ha ket meresi pont kozott nem valtozik a pozicio
 def idle_time(gpx):
-    pass
+    alldogalas=0
+    for i in range(len(gpx)):
+        if gpx[i]["position"]==gpx[i+1]["position"]:
+            alldogalas+=gpx[i+1]["timestamp"]-gpx[i]["timestamp"]
+    return alldogalas        
 
 # Ez a fuggveny adja vissza masodpercben, hogy mennyit mozogtunk
 def moving_time(gpx):
-    pass
+    futas=0
+    for i in range(len(gpx)):
+        if gpx[i]["position"]!=gpx[i+1]["position"]:
+            futas+=gpx[i+1]["timestamp"]-gpx[i]["timestamp"]
+    return futas
+
 
 # Ez a fuggveny adjon vissza egy stringet, amiben "szepen" benne van egy eltelt ido, amit masodpercben kapunk meg
 # Szep alat mm:ss formatumot ertjuk, ha nem volt legalabb egy ora, es hh:mm:ss formatumot, ha igen.
