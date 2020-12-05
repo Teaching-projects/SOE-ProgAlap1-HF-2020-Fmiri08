@@ -21,8 +21,9 @@ A feladatban tobb, esetenkent egymasra epulo fuggvenyt kell megirni, melyek erro
 # p1 es p2 is (x,y) tuple-ok
 def position_distance(p1,p2):
     x=p2[0]-p1[0]
-    y=p2[1]-p1[0]
-    tav=x+y
+    y=p2[1]-p1[1]
+    import math
+    tav=math.sqrt((x*x)+(y*y))
     return tav
 
 # Ez a fuggveny egy gpx-et var, ami a fent leirt pontokbol allo lista.
@@ -30,14 +31,13 @@ def position_distance(p1,p2):
 # Nem kell foglalkozni 3d tavolsaggal, csak a "felulnezeti tavolsaggal".
 def total_distance(gpx):
     ossztav=0
-    for i in range(len(gpx)):
+    for i in range(len(gpx)-1):
         ossztav+=position_distance(gpx[i]["position"],gpx[i+1]["position"])
     return ossztav
 
 # Ez adja meg maasodpercben, milyen hosszan futottunk
 def total_time(gpx):
-    osszido=0
-    osszido=gpx[len-1]["timestamp"]-gpx[0]["timestamp"]
+    osszido=gpx[len(gpx)-1]["timestamp"]-gpx[0]["timestamp"]
     return osszido
 
 # Ez a fuggveny adja meg masodpercben, hogy a futas soran hany masodpercig alldogaltunk csak futas helyett.
@@ -52,7 +52,7 @@ def idle_time(gpx):
 # Ez a fuggveny adja vissza masodpercben, hogy mennyit mozogtunk
 def moving_time(gpx):
     futas=0
-    for i in range(len(gpx)):
+    for i in range(len(gpx)-1):
         if gpx[i]["position"]!=gpx[i+1]["position"]:
             futas+=gpx[i+1]["timestamp"]-gpx[i]["timestamp"]
     return futas
@@ -64,21 +64,55 @@ def moving_time(gpx):
 # Jo peldak: 3:14, 12:23:05, 1:00:01
 # Rossz peldak: 03:14, 12:23:5, 1:0:1
 def pretty_time(seconds):
-    pass
+    ora = seconds // 3600   # pl. 3800 // 3600 = 1(.055555556)
+    perc = (seconds // 60) - ora * 60  # 3800 seconds esetén 63,3333 - 1* 60 = 3(,3333)
+    mp = seconds - (ora*3600 + perc*60)  # 3800 esetén 20
+    if seconds < 3600: # 1 ora = 3600 mp
+        if perc == 0:
+            prettytime = "{:02d}:{:02d}".format(perc, mp)
+        else:
+            prettytime = "{}:{:02d}".format(perc, mp)
+    else:
+        prettytime = "{}:{:02d}:{:02d}".format(ora, perc, mp)
+    return prettytime
 
 # Ez a fuggveny szamolja ki, hogy mennyi volt az osszes emelkedes, azaz hany metert mentunk felfele
 def total_ascent(gpx):
-    pass
+    osszemelkedes=0
+    for i in range(len(gpx)-1):
+        if gpx[i]["elavation"]<gpx[i+1]["elavation"]:
+            osszemelkedes+=gpx[i+1]["elavation"]-gpx[i]["elavation"]
+    return osszemelkedes        
 
 # Ez a fuggveny keresse meg a gpx track elejen azt a legrovidebb reszt, ami mar atlepi a megadott tavolsagot, majd errol a reszrol adjon vissza egy masolatot.
 # A fuggveny adjon vissza egy ures tracket, ha az egesz gpx track nincs olyan hosszu, mint a megadott tavolsag.
 def chop_after_distance(gpx, distance):
-    pass
-
+    tavolsag=0
+    sorszam=-1
+    for i in range(len(gpx)-1):
+        tavolsag+=position_distance(gpx[i]["position"],gpx[i+1]["position"])
+        if tavolsag>distance:
+            sorszam=i
+            break
+    lis=[]
+    for i in range(sorszam+1):
+        lis.append(gpx[i])
+    return lis
 # Ez a fuggveny keresse meg a leggyorsabb, legalabb 1 km-es szakaszt a trackben, es adjon vissza rola egy masolatot
 def fastest_1k(gpx):
-    pass
-
+    import math
+    lido=math.inf
+    start=0
+    end=0
+    for i in range(len(gpx)):
+        nagyobb=chop_after_distance(gpx[i:], 1000)
+        if nagyobb!=[]:
+            ido=total_time(nagyobb)
+            if lido>ido:
+                lido=ido
+                start=i
+                end=i+len(nagyobb)
+    return gpx[start:end+1]         
 
 # Az alabbi reszek betoltenek egy ilyen pickle fajlt, es kiirjak a statisztikakat megformazva
 import pickle
