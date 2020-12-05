@@ -103,7 +103,6 @@ def fastest_1k(gpx):
     import math
     lido=math.inf
     start=0
-    end=0
     for i in range(len(gpx)):
         nagyobb=chop_after_distance(gpx[i:], 1000)
         if nagyobb!=[]:
@@ -111,8 +110,7 @@ def fastest_1k(gpx):
             if lido>ido:
                 lido=ido
                 start=i
-                end=i+len(nagyobb)
-    return gpx[start:end+1]         
+    return    chop_after_distance(gpx[start:], 1000)      
 
 # Az alabbi reszek betoltenek egy ilyen pickle fajlt, es kiirjak a statisztikakat megformazva
 import pickle
