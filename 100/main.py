@@ -92,7 +92,7 @@ def chop_after_distance(gpx, distance):
     for i in range(len(gpx)-1):
         tavolsag+=position_distance(gpx[i]["position"],gpx[i+1]["position"])
         if tavolsag>distance:
-            sorszam=i
+            sorszam=i+1
             break
     lis=[]
     for i in range(sorszam+1):
