@@ -125,13 +125,13 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
         szo (str): a megfejtendő szó
         osszes_elet (int): az életeink száma, azaz hány rossz tipp után vesztettünk
     """
+    print(eletek(osszes_elet,elhazsnalt))
     betuk=[]
     while True:
         betu=input("adja meg a következő betüt: ")
         betuk.append(betu)
         print(megjelenites(szo, betuk))
-        print(eletek(osszes_elet, ))
-        if 
+        print(eletek(osszes_elet, elhasznalt))
         break
         
     
