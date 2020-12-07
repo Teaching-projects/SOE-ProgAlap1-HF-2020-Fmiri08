@@ -99,10 +99,7 @@ def eletek(osszes:int,elhasznalt:int)->str:
     Returns:
         str: 😄😄😄💀💀 formátumú indikátor (a példa adatai: 5 összes, 2 elhasznált)
     """
-    eletek=(osszes-elhasznalt)*"😄"
-    elhasznaltelet=elhasznalt*"💀"
-    maradek=eletek+elhasznaltelet
-    return maradek   
+    #ez teljesen rossz volt
 
 def akasztofa(szo:str,osszes_elet:int) -> None:
     """Végigvisz egy akasztófa játékot, ahol a megadott szót kell kitalálni, és `osszes_elet` rossz tipp után vesztettünk.
