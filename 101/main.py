@@ -13,10 +13,9 @@ def kozte_van(betu:str, betuk:Tippek) -> bool:
     Returns:
         bool: `True` ha benne van, `False` ha nincsen.
     """
-    for i in range(len(betuk)):
-        if betu==betuk[i]:
-            return True
-        else: return False    
+    if betu in betuk:
+        return True
+    else: return False    
 
 specialis_karakterek=[' ','.',',','!','?',':','-']
 
@@ -56,7 +55,7 @@ def megfejtett(szo:str, betuk:Tippek) -> bool:
     """
     if '_' in megjelenites(szo,betuk):
         return False
-    else: return True    
+    else: return True  
 
 def tartalmazza(szo:str, betu:str) -> bool:
     """Megadja, hogy a megaadott betű szerepel-e a megadott szóban.
@@ -125,29 +124,55 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
         szo (str): a megfejtendő szó
         osszes_elet (int): az életeink száma, azaz hány rossz tipp után vesztettünk
     """
-    print(eletek(osszes_elet,elhazsnalt))
-    betuk=[]
-    while True:
-        betu=input("adja meg a következő betüt: ")
-        betuk.append(betu)
-        print(megjelenites(szo, betuk))
-        print(eletek(osszes_elet, elhasznalt))
-        break
+  #  Tippek = []
+   # elhasznalt = 0
+    #rossz = rossz_tippek(szo,Tippek)
+    #while True:
+     #   betu = input("Adja meg a kovetkezo betut: ")
+      #  Tippek.append(betu)
+       # print(megjelenites(szo,Tippek))
+      #  if rossz_tippek(szo, Tippek):
+      #      elhasznalt += 1
+      #  print(eletek(osszes_elet,elhasznalt))
+      #  if megfejtett(szo,Tippek):
+      #      print("Gratulalok, nyertel, es meg {} eleted maradt!".format(osszes_elet))
+      #      break
+       # if osszes_elet == rossz:
+        #    print("Sajnalom, nem nyertel, ez lett volna a megoldas: ", szo)
+         #   break
         
     
 
 
-    return 
+    #return 
     
 
 
 
 # Ez alatt ne tessek modositani.
 
-szo=input()
-maxelet=int(input())
-akasztofa(szo,maxelet)
+#szo=input()
+#maxelet=int(input())
+#akasztofa(szo,maxelet)
 
-
-
-
+#1test
+betuk=["a","b","c"]
+print(kozte_van("a",betuk))#true
+#működik
+betuk=["c","a","b"]
+print(kozte_van("b",betuk)) #kijavítottam a hibát, eddig csak az első elemet viszgálta
+#mostmár működik
+#test2
+szo="valami"
+print(megjelenites(szo, betuk)) #_a_a__
+#működik
+szo2="cica"
+print(megjelenites(szo2, betuk)) #c_ca
+#működik
+#3test
+print(megfejtett(szo, betuk)) #false
+#működik
+szo3="abc"
+print(megfejtett(szo3, betuk)) #true
+#működik
+#4test
