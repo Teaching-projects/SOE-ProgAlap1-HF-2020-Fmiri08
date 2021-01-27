@@ -99,7 +99,10 @@ def eletek(osszes:int,elhasznalt:int)->str:
     Returns:
         str: 😄😄😄💀💀 formátumú indikátor (a példa adatai: 5 összes, 2 elhasznált)
     """
-    #ez teljesen rossz volt
+    nem_halal=(osszes-elhasznalt)*"😄"
+    halal=elhasznalt*"💀"
+    elet=nem_halal+halal
+    return elet
 
 def akasztofa(szo:str,osszes_elet:int) -> None:
     """Végigvisz egy akasztófa játékot, ahol a megadott szót kell kitalálni, és `osszes_elet` rossz tipp után vesztettünk.
@@ -121,37 +124,34 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
         szo (str): a megfejtendő szó
         osszes_elet (int): az életeink száma, azaz hány rossz tipp után vesztettünk
     """
-  #  Tippek = []
-   # elhasznalt = 0
-    #rossz = rossz_tippek(szo,Tippek)
-    #while True:
-     #   betu = input("Adja meg a kovetkezo betut: ")
-      #  Tippek.append(betu)
-       # print(megjelenites(szo,Tippek))
-      #  if rossz_tippek(szo, Tippek):
-      #      elhasznalt += 1
-      #  print(eletek(osszes_elet,elhasznalt))
-      #  if megfejtett(szo,Tippek):
-      #      print("Gratulalok, nyertel, es meg {} eleted maradt!".format(osszes_elet))
-      #      break
-       # if osszes_elet == rossz:
-        #    print("Sajnalom, nem nyertel, ez lett volna a megoldas: ", szo)
-         #   break
-        
-    
-
-
-    #return 
-    
+    tipp=[]
+    jatek=maxelet
+    while True:
+        print(megjelenites(szo,tipp))
+        print(eletek(maxelet,rossz_tippek(szo,tipp)))
+        print(tipp)
+        betu=input("Adja meg a kovetkezo betut: ")
+        print(betu)
+        tipp.append(betu)
+        if megfejtett(szo,tipp):
+            print(szo)
+            print("Gratulalok, nyertel, es meg {} eleted maradt!".format(maxelet - rossz_tippek(szo,tipp)))
+            break
+        if tartalmazza(szo,betu)==False:
+            jatek-=1
+        if jatek==0:
+            print("Sajnalom, nem nyertel, ez lett volna a megoldas: {}".format(szo))
+            break
 
 
 
 # Ez alatt ne tessek modositani.
 
-#szo=input()
-#maxelet=int(input())
-#akasztofa(szo,maxelet)
+szo=input()
+maxelet=int(input())
+akasztofa(szo,maxelet)
 
+"""
 #1test
 betuk=["a","b","c"]
 print(kozte_van("a",betuk))#true
@@ -173,3 +173,4 @@ szo3="abc"
 print(megfejtett(szo3, betuk)) #true
 #működik
 #4test
+"""
