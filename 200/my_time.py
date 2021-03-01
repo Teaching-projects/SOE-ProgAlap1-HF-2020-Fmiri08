@@ -124,7 +124,7 @@ class Time:
         if len(tl)==1: 
             return int(tl[0])
         if len(tl)==2:
-            return int(tl[0]*60)+int(tl[0])
+            return int(tl[0])*60+int(tl[1])
         if len(tl)==3:
-            return int(tl[0]*3600)+int(tl[0]*60)+int(tl[0])        
+            return int(tl[0])*3600+int(tl[1])*60+int(tl[2])        
 
