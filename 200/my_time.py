@@ -94,7 +94,7 @@ class Time:
         """
         if self.seconds<60:
             return "{}".format(self._ss())
-        elif self.seconds>60 and self.seconds>3600:
+        elif self.seconds>60 and self.seconds<3600:
             return "{}:{:02d}".format(self._mm(), self._ss())
         else: return "{}:{:02d}:{:02d}".format(self._hh(), self._mm(), self._ss())        
 
