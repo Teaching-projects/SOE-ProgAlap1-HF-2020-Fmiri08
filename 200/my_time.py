@@ -36,7 +36,7 @@ class Time:
         >>> Time(1234)._ss()
         34
         """
-        return self.seconds%60
+        return self.seconds % 60
     
     def _mm(self) -> int:
         """Visszaadja, hogy mennyit mutat a "percmutato"
@@ -51,7 +51,7 @@ class Time:
         >>> Time(1234)._mm()
         20
         """
-        return self.seconds//60
+        return self.seconds // 60
     
     def _hh(self) -> int:
         """Visszaadja, hogy mennyit mutat az "oramutato", amely sosem nullazodik.
@@ -124,7 +124,7 @@ class Time:
         if len(tl)==1: 
             return int(tl[0])
         if len(tl)==2:
-            return int(tl[0]*60)
+            return int(tl[0]*60 + tl[0])
         if len(tl)==3:
-            return int(tl[0*3600])        
+            return int(tl[0]*3600 + tl[0]*60 +tl[0])        
 
