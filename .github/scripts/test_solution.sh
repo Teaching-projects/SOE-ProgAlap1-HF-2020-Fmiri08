@@ -1,11 +1,13 @@
 #!/bin/bash
 
 LOG="log.txt"
+TMP="tmp.txt"
 DIR=$1
 
 cd $DIR
 rm -f $LOG
 
+[[ -d tests ]] &&
 for case in `ls tests/*.in`; do
     generated="$case.gen"
     rm -f $generated
@@ -28,6 +30,16 @@ for case in `ls tests/*.in`; do
         echo "">>$LOG     
     fi
     rm $generated   
+done;
+
+for py in `ls *.py`; do
+    if [ "$py" != "main.py" ] && [ "$py" != "generate_input.py" ]; then
+        if python3 -m doctest $py > $TMP; then
+            echo "Doctest for $py went well"
+        else
+            cat $TMP >> $LOG
+        fi        
+    fi
 done;
 
 if [[ -f "$LOG" ]] ; then
